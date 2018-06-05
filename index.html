@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+	<!-- <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="css/game.css" />
+	<script src="js/parallax.min.js"></script>
+	<title>化身御匾神射手，赢取豐富奖品|Paiza-Striker</title>
+</head>
+<body class="ready ">
+	<div class="game_body">
+		<ul id="scene">
+			<li class="layer" data-depth="0.3"><div class="grass"><img src="images/grass.jpg"></div></li>
+			<li class="layer" data-depth="0.1"><div class="bg"><img src="images/bg.png"></div></li>
+			<li class="layer" data-depth="0.1">
+				<div class="colorful"></div>
+				<div class="colorful"></div>
+			</li>
+
+			<li class="layer" data-depth="0.3"><div class="goal"><img src="images/goal.png"></div></li>
+			<li class="layer" data-depth="0.3"><div class="goalie">
+				<div class="goalie_offset">
+					<img src="images/goalie-standing.png">
+				</div>
+			</div></li>
+			<li class="layer" data-depth="0.3">
+				<div class="ball">
+					<div class="ball_shadow"><img src="images/ball-shadow.png"></div>
+					<div class="ball_offset">
+						<div class="rotate">
+							<img src="images/ball.png">
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="layer" data-depth="0.3"><div class="foot"><img src="images/foot.png"></div></li>
+		</ul>
+		
+	</div>
+
+	<div class="speed"></div>
+	<div class="paiza_logo"><img src="images/paiza-logo.png"></div>
+	<div class="title"><img src="images/title.png"></div>
+
+	<div class="shoot_button">
+		<img src="images/shoot.png">
+	</div>
+
+	<div class="scoreboard win" style="display: none;">
+		<div class="score">
+			<img src="images/score.png">
+			<h3>Goal</h3>
+			<p>恭喜获得</p>
+			<div class="prize">
+				<img src="images/reward.png">
+				<div class="prize_content">
+					<p>澳门巴黎人免费住宿一晚</p>
+					<p>One free room night at The Parisian Macao</p>
+				</div>
+
+			</div>
+			<button>领取卡券</button>
+		</div>
+	</div>
+
+	<div class="scoreboard lost" style="display: none;">
+		<div class="score">
+			<h3>谢谢参与!</h3>
+			<p>Nice try! Thanks for playing!<br>Below Money Wheel Campaign message</p>
+		</div>
+	</div>
+
+	<div class="scoreboard from " style="display: none;" >
+		<div class="score from">
+			<h3>绑定账号</h3>	
+			<p>Binding</p>
+			<form>
+				Patron ID
+				<input type="" name="">
+				DOB
+				<input type="" name="">
+				<button>提交</button>
+			</form>
+
+		</div>
+	</div>
+
+	<div class="scoreboard TandC" style="display: none;" >
+		<div class="close"></div>
+		<div class="score">
+			<h3>活动规则</h3>
+			<ol>
+				<li>
+					<p>本活动为「澳门金沙渡假区」官方微信“已綁定客戶”尊享。</p>
+					<p>This event is only open to followers who have bound their membership to “Sands Resort Macao” official WeChat account.</p>
+				</li>
+				<li>
+					<p>活动日期由即日起至6月30日。</p>
+					<p>This event will be held until 30 June 2018</p>
+				</li>
+				<li>
+					<p>参加者可以获得一次活动资格。</p>
+					<p>Participants can only play the game once. </p>
+				</li>
+				<li>
+					<p>参加者需年满21岁或以上。</p>
+					<p>Participants must be 21 years of age or above.</p>
+				</li>
+				<li>
+					<p>详情请联络您的御匾会业务代表。</p>
+					<p>For more information, please contact your Paiza representative.</p>
+				</li>
+				<li>
+					<p>威尼斯人股份有限公司管理层对此活动持有最终解释权。</p>
+					<p>Venetian Macao Limited management reserves the right to amend any terms and conditions stated herein at any time without prior notice.</p>
+				</li>
+				<li>
+					<p>如有任何争议，“澳门金沙度假区”官方微信公众号持有最终解释权。</p>
+					<p>In case of any dispute, “Sands Resorts Macao” official WeChat account reserves the right to final decision. </p>
+				</li>
+
+
+			</ol>
+
+		</div>
+
+	</div>
+
+
+
+	<div class="mute"></div>
+	<audio id="audio" src="sound/VHP15_trk1_FIELDS_OF_FURY_(MAIN)_William_Werwath_(ASCAP)-Segment 1.mp3" preload="preload" loop="loop">
+	Your browser does not support the audio tag.
+	</audio> 
+
+</body>
+<script type="text/javascript">
+
+var getResult = true; // 是否获得请求
+
+var winning	= true	; //是否中奖
+
+console.log("中奖? = " + winning);
+
+var ball_win_offset = "-30%"; //中球与不中球的差别, 就在球的高度. 高一点就不会被守门员拦截;
+
+
+// 视差启动
+var scene = document.getElementById('scene');
+var parallax = new Parallax(scene,{
+	//削弱垂直移动幅度
+	limitX: 20,
+  	limitY: 5,
+});
+
+//随机函数
+function random_offset(){
+	var min = -350;
+	var max = 350;
+	var offset = parseInt(Math.random()*(max-min+1) + 5);
+	return offset - 300; 
+}
+
+window.onload=function(){
+
+		//页面加载完, 准备显示按钮
+	setTimeout(function(){
+		document.querySelector("body").className = document.querySelector("body").className + " penalty";
+	},10);
+
+	//点击后, 先进入hit状态, 等待获取结果, 之后再shoot!
+	document.querySelector(".shoot_button").onclick = function(){
+
+		var get_offset = random_offset();
+		console.log("offset = " + get_offset);
+
+		document.querySelector("body").className = document.querySelector("body").className + " hit";
+
+		if (getResult) {
+			setTimeout(function(){
+				document.querySelector("body").className = document.querySelector("body").className + " shoot";
+				//shoot后冻结视差
+				parallax.disable();
+			},200) 
+			
+
+
+		}else{
+			//等待
+		};
+
+
+		if (winning) 
+
+		{//赢了
+
+			//显示背景烟花
+			setTimeout(function(){
+				document.querySelector("body").className = document.querySelector("body").className + " win";
+			},3000);
+
+			//足球偏移量
+			console.log((get_offset * 2) + "%");
+			setTimeout(function(){
+				document.querySelector(".ball_offset").style = 
+				"transform:translate3d(" + (get_offset * 2) + "%" +  ", "+ ball_win_offset+ ", 0px); -webkit-transform:translate3d(" + (get_offset * 2) + "%" +  ", "+ ball_win_offset+ ", 0px)"
+			},200)
+			
+			//偏移守门员
+			setTimeout(function(){
+
+				document.querySelector(".goalie .goalie_offset").style.cssText = 
+				"transform:translate3d(" + (get_offset * 2)*0.14 + "%" +  ", 10%, 0px); -webkit-transform:translate3d(" + (get_offset * 2)*0.14 + "%" +  ", 10%, 0px)";
+
+				if (get_offset > 0) {
+					document.querySelector(".goalie img").src = "images/goalie-smash.png";
+					setTimeout(function(){
+						document.querySelector(".goalie img").src ="images/goalie-falls.png"
+					},1000 * 0.8 + 100 );
+
+					document.querySelector(".goalie img").style.cssText = 
+					"transform: rotateY(0deg) translate3d(-40%, 0%, 0px) scale3d(1, 1, 1); -webkit-transform: rotateY(0deg) translate3d(-40%, 0%, 0px) scale3d(1, 1, 1);"
+				}else{
+					document.querySelector(".goalie img").src = 
+					"images/goalie-smash.png";
+					setTimeout(function(){
+						document.querySelector(".goalie img").src ="images/goalie-falls.png"
+					},1000 * 0.8 + 100 );
+
+					document.querySelector(".goalie img").style.cssText = "transform: rotateY(180deg) translate3d(40%, 0%, 0px) scale3d(1, 1, 1); -webkit-transform: rotateY(180deg) translate3d(40%, 0%, 0px) scale3d(1, 1, 1);"
+				}
+
+			},(1000 * 0.9 + 200))
+
+
+		}else
+
+		{// 输了
+			
+			//足球偏移
+			setTimeout(function(){
+
+				document.querySelector(".ball_offset").style.cssText = 
+				"transform:translate3d(" + (get_offset * 2) + "%" +  ", 0%, 0px); -webkit-transform:translate3d(" + (get_offset * 2) + "%" +  ", 0%, 0px)";
+				// alert(get_offset + "+" )
+			},200);
+
+			//偏移守门员
+			setTimeout(function(){
+
+				document.querySelector(".goalie .goalie_offset").style.cssText = 
+				"transform:translate3d(" + (get_offset * 2)*0.128 + "%" +  ", 0%, 0px); -webkit-transform:translate3d(" + (get_offset * 2)*0.128 + "%" +  ", 0%, 0px)";
+
+
+				// var goalie = document.querySelector(".goalie img");
+
+				if (get_offset > 0) {
+					//向右
+					document.querySelector(".goalie img").src = "images/goalie-smash.png";
+					document.querySelector(".goalie img").style.cssText = 
+					"transform: rotateY(0deg) translate3d(-40%, 4%, 0px) scale3d(1, 1, 1); -webkit-transform: rotateY(0deg) translate3d(-40%, 4%, 0px) scale3d(1, 1, 1)"
+				}else{
+					//向左
+					document.querySelector(".goalie img").src = "images/goalie-smash.png";
+					document.querySelector(".goalie img").style.cssText = 
+					"transform: rotateY(180deg) translate3d(40%, 4%, 0px) scale3d(1, 1, 1); -webkit-transform: rotateY(180deg) translate3d(40%, 4%, 0px) scale3d(1, 1, 1);"
+				}
+
+
+
+				// document.querySelector(".goalie img").src = "images/goalie-smash.png";
+				// document.querySelector(".goalie img").src = "images/goalie-smash.png";
+
+			},(1000 * 0.8 + 200))
+
+
+
+
+
+		}	
+
+	}
+
+}
+
+
+
+</script>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    // 调用微信接口自动播放音乐；
+
+    function autoPlayAudio() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+
+        wx.ready(function() {
+            document.getElementById('audio').play();
+            document.querySelector(".mute").style.opacity = "0.3";
+            console.log("播放");
+
+        });
+
+    }
+
+
+
+    document.querySelector(".mute").onclick=function(){
+
+        if (document.querySelector(".mute").style.opacity == "1") {
+            autoPlayAudio();
+        }else{
+            document.querySelector(".mute").style.opacity = "1";
+            document.getElementById('audio').pause();
+            console.log("暂停");
+
+        }
+    }
+
+    autoPlayAudio();
+
+</script>
+</html>

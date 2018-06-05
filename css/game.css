@@ -1,0 +1,744 @@
+body {
+  background-color: #000;
+}
+html {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+}
+body {
+  max-height: 1040px;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+  overflow: hidden;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  border: 0;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.185em;
+}
+img {
+  width: auto\9;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+button,
+input {
+  *overflow: visible;
+  line-height: normal;
+}
+button {
+  padding: 0;
+  border: 0;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+a {
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+p {
+  margin: 0 0 10px;
+}
+small {
+  font-size: 85%;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+cite {
+  font-style: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  font-weight: normal;
+  line-height: 1;
+}
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+dt {
+  font-weight: bold;
+}
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #ffffff;
+}
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 20px;
+  border-left: 5px solid #eeeeee;
+}
+.game_body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 320px;
+  max-height: 500px;
+  margin: 0 auto;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: 2000ms, -webkit-perspective, -webkit-perspective-origin 2000ms;
+  transition: 2000ms, -webkit-perspective, -webkit-perspective-origin 2000ms;
+  transition: perspective, perspective-origin 2000ms, 2000ms;
+  transition: perspective, perspective-origin 2000ms, 2000ms, -webkit-perspective, -webkit-perspective-origin 2000ms;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+.game_body ul {
+  width: 100%;
+  height: 100%;
+  top: 1%;
+}
+.mute {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  background-image: url(../images/mute.svg);
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: .3;
+}
+.layer {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+.layer > div {
+  -webkit-transition: all 2000ms;
+  transition: all 2000ms;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  will-change: transform;
+}
+.title {
+  position: absolute;
+  width: 90%;
+  top: 10px;
+  left: 5%;
+  margin-top: 0;
+  z-index: 99;
+}
+.grass {
+  width: 200%;
+  position: absolute;
+  margin-left: -50%;
+  -webkit-transform-origin: 50% 50% 0px;
+          transform-origin: 50% 50% 0px;
+}
+.bg {
+  width: 150%;
+  position: absolute;
+  top: 0;
+  left: -25%;
+  margin-top: -19.8%;
+}
+.goal {
+  margin-top: 65%;
+}
+.goalie {
+  width: 30%;
+  margin-top: 90%;
+  margin-left: 35%;
+}
+.goalie img {
+  -webkit-transform-origin: 92% 50%;
+          transform-origin: 92% 50%;
+}
+.ball {
+  width: 30%;
+  position: absolute;
+  top: 270px;
+  left: 35%;
+  -webkit-transform: rotateX(0deg) translate3d(0%, 15%, 380px) scale3d(0.18, 0.18, 1);
+          transform: rotateX(0deg) translate3d(0%, 15%, 380px) scale3d(0.18, 0.18, 1);
+}
+.ball .rotate {
+  position: relative;
+  z-index: 100;
+}
+.shoot_button {
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  bottom: 2%;
+  opacity: 0;
+  -webkit-transition: all 0.5s 1600ms;
+  transition: all 0.5s 1600ms;
+  -webkit-transform: translate3d(0%, 140%, 0px);
+          transform: translate3d(0%, 140%, 0px);
+  z-index: 9;
+}
+.ball_shadow {
+  position: absolute;
+  width: 200%;
+  left: -50%;
+  top: 62%;
+  z-index: 99;
+}
+.foot {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  bottom: 0%;
+  -webkit-transform: rotateX(0deg) translate3d(-56.2%, -80%, 380px) scale3d(0.3, 0.3, 1);
+          transform: rotateX(0deg) translate3d(-56.2%, -80%, 380px) scale3d(0.3, 0.3, 1);
+}
+.goalie_offset {
+  -webkit-transform: translate3d(0px, 0px, 0px);
+          transform: translate3d(0px, 0px, 0px);
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.43, 0.99);
+          transition-timing-function: cubic-bezier(0, 0, 0.43, 0.99);
+}
+.ball_offset {
+  -webkit-transform: translate3d(0px, 0px, 0px);
+          transform: translate3d(0px, 0px, 0px);
+  -webkit-transition: all 1000ms;
+  transition: all 1000ms;
+  -webkit-transition-timing-function: cubic-bezier(0.58, 0.01, 1, 0.85);
+          transition-timing-function: cubic-bezier(0.58, 0.01, 1, 0.85);
+}
+.speed {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../images/speed.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-animation-name: speed;
+          animation-name: speed;
+  -webkit-animation-duration: .2s;
+          animation-duration: .2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  display: none;
+}
+.colorful {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate3d(0%, 7%, 0px) scale3d(1.3, 1.3, 1);
+          transform: translate3d(0%, 7%, 0px) scale3d(1.3, 1.3, 1);
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-animation-name: colorful;
+          animation-name: colorful;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  display: none;
+}
+.colorful:nth-child(1) {
+  background-image: url(../images/colorful1.png);
+  -webkit-animation-delay: .0s;
+          animation-delay: .0s;
+}
+.colorful:nth-child(2) {
+  background-image: url(../images/colorful2.png);
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+.paiza_logo {
+  position: absolute;
+  width: 60px;
+  left: 50%;
+  margin-left: -30px;
+  top: 5px;
+}
+.ready .game_body {
+  -webkit-perspective-origin: 50% 40%;
+          perspective-origin: 50% 40%;
+  -webkit-perspective: 500;
+          perspective: 500;
+  will-change: transform;
+}
+.ready .game_body .grass {
+  -webkit-transform: rotateX(88deg) translate3d(0%, 37%, -44px) scale3d(1, 1, 1);
+          transform: rotateX(88deg) translate3d(0%, 37%, -44px) scale3d(1, 1, 1);
+}
+.ready .game_body .bg {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 0%, -26px) scale3d(1, 1, 1);
+          transform: rotateX(0deg) translate3d(0%, 0%, -26px) scale3d(1, 1, 1);
+}
+.ready .game_body .goal {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 0%, 0px) scale3d(0.6, 0.6, 1);
+          transform: rotateX(0deg) translate3d(0%, 0%, 0px) scale3d(0.6, 0.6, 1);
+}
+.ready .game_body .goalie {
+  -webkit-transform: rotateX(0deg) translate3d(0%, -67%, 0px) scale3d(0.7, 0.7, 1);
+          transform: rotateX(0deg) translate3d(0%, -67%, 0px) scale3d(0.7, 0.7, 1);
+}
+.penalty .game_body {
+  -webkit-perspective: 350;
+          perspective: 350;
+  will-change: transform;
+  -webkit-perspective-origin: 50% 60%;
+          perspective-origin: 50% 60%;
+}
+.penalty .game_body .grass {
+  -webkit-transform: rotateX(100deg) translate3d(0%, 8%, -133px) scale3d(1, 1, 1);
+          transform: rotateX(100deg) translate3d(0%, 8%, -133px) scale3d(1, 1, 1);
+}
+.penalty .game_body .bg {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 20.5%, -150px) scale3d(1.25, 1.25, 1);
+          transform: rotateX(0deg) translate3d(0%, 20.5%, -150px) scale3d(1.25, 1.25, 1);
+}
+.penalty .game_body .goal {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 114%, -144px) scale3d(0.4, 0.4, 1);
+          transform: rotateX(0deg) translate3d(0%, 114%, -144px) scale3d(0.4, 0.4, 1);
+}
+.penalty .game_body .goalie {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 89%, -120px) scale3d(0.5, 0.5, 1);
+          transform: rotateX(0deg) translate3d(0%, 89%, -120px) scale3d(0.5, 0.5, 1);
+}
+.penalty .game_body .ball {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 15%, 280px) scale3d(0.18, 0.18, 1);
+          transform: rotateX(0deg) translate3d(0%, 15%, 280px) scale3d(0.18, 0.18, 1);
+  display: block;
+}
+.penalty .shoot_button {
+  opacity: 1;
+  -webkit-transform: translate3d(0%, 0%, 0px);
+          transform: translate3d(0%, 0%, 0px);
+}
+.hit .game_body .foot {
+  -webkit-transition-duration: 100ms;
+          transition-duration: 100ms;
+  -webkit-transform: rotateX(0deg) translate3d(-11.2%, -34%, 280px) scale3d(0.3, 0.3, 1);
+          transform: rotateX(0deg) translate3d(-11.2%, -34%, 280px) scale3d(0.3, 0.3, 1);
+}
+.hit .game_body .rotate {
+  -webkit-animation-name: rotate;
+          animation-name: rotate;
+  -webkit-animation-duration: 3000ms;
+          animation-duration: 3000ms;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+.hit .speed {
+  display: block;
+}
+.hit .shoot_button {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
+  -webkit-transform: translate3d(0%, 140%, 0px);
+          transform: translate3d(0%, 140%, 0px);
+}
+.shoot .game_body {
+  -webkit-perspective: 350;
+          perspective: 350;
+  will-change: transform;
+  -webkit-perspective-origin: 50% 50%;
+          perspective-origin: 50% 50%;
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
+  -webkit-transition-delay: 200ms;
+          transition-delay: 200ms;
+  -webkit-transition-timing-function: cubic-bezier(0.92, 0.07, 0.79, 0.99);
+          transition-timing-function: cubic-bezier(0.92, 0.07, 0.79, 0.99);
+}
+.shoot .game_body .layer > div {
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
+  -webkit-transition-delay: 200ms;
+          transition-delay: 200ms;
+  -webkit-transition-timing-function: cubic-bezier(0.92, 0.07, 0.79, 0.99);
+          transition-timing-function: cubic-bezier(0.92, 0.07, 0.79, 0.99);
+}
+.shoot .game_body .grass {
+  -webkit-transform: rotateX(97deg) translate3d(0%, 51%, -101px) scale3d(1, 1, 1);
+          transform: rotateX(97deg) translate3d(0%, 51%, -101px) scale3d(1, 1, 1);
+}
+.shoot .game_body .bg {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 12.6%, 0px) scale3d(1, 1, 1);
+          transform: rotateX(0deg) translate3d(0%, 12.6%, 0px) scale3d(1, 1, 1);
+}
+.shoot .game_body .goal {
+  -webkit-transform: rotateX(0deg) translate3d(0%, 35%, 65px) scale3d(0.8, 0.8, 1);
+          transform: rotateX(0deg) translate3d(0%, 35%, 65px) scale3d(0.8, 0.8, 1);
+}
+.shoot .game_body .goalie {
+  -webkit-transform: rotateX(0deg) translate3d(0%, -20%, 90px) scale3d(1, 1, 1);
+          transform: rotateX(0deg) translate3d(0%, -20%, 90px) scale3d(1, 1, 1);
+}
+.shoot .game_body .ball {
+  -webkit-transition-timing-function: cubic-bezier(0.15, 0.85, 0.79, 0.99) !important;
+          transition-timing-function: cubic-bezier(0.15, 0.85, 0.79, 0.99) !important;
+  -webkit-transform: rotateX(0deg) translate3d(0%, -37%, 91px) scale3d(0.13, 0.13, 1);
+          transform: rotateX(0deg) translate3d(0%, -37%, 91px) scale3d(0.13, 0.13, 1);
+  display: block;
+}
+.shoot .game_body .ball .ball_shadow {
+  display: none;
+}
+.shoot .game_body .ball .rotate {
+  -webkit-animation-timing-function: cubic-bezier(0, 0, 0.43, 1);
+          animation-timing-function: cubic-bezier(0, 0, 0.43, 1);
+  -webkit-animation-iteration-count: 1!important;
+          animation-iteration-count: 1!important;
+}
+.shoot .game_body .foot {
+  -webkit-transition-duration: 50ms;
+          transition-duration: 50ms;
+  -webkit-transform: rotateX(0deg) translate3d(-336.2%, -90%, 180px) scale3d(0.3, 0.3, 1);
+          transform: rotateX(0deg) translate3d(-336.2%, -90%, 180px) scale3d(0.3, 0.3, 1);
+}
+.shoot .shoot_button {
+  display: none;
+}
+.win .colorful {
+  display: block;
+}
+.scoreboard {
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  top: 10%;
+  padding: 3%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 11px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0px 0px 20px 7px rgba(61, 141, 191, 0.36), inset 0px 0px 6px 2px rgba(0, 0, 0, 0.78), 0px 2px 20px 3px #2b3e00;
+          box-shadow: inset 0px 0px 20px 7px rgba(61, 141, 191, 0.36), inset 0px 0px 6px 2px rgba(0, 0, 0, 0.78), 0px 2px 20px 3px #2b3e00;
+  color: #fff;
+  min-height: 300px;
+  display: table;
+  table-layout: fixed;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.scoreboard .close {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  top: -65px;
+  margin-left: -25px;
+  background-color: rgba(255, 255, 255, 0.16);
+  background-image: url(../images/close.svg);
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+.scoreboard .score {
+  width: 100%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+.scoreboard .score > img {
+  width: 70%;
+  -webkit-filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.16));
+          filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.16));
+}
+.scoreboard .score h3 {
+  font-size: 30px;
+}
+.scoreboard .score .prize {
+  /* Rectangle: */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#272727), to(#010101));
+  background-image: linear-gradient(-180deg, #272727 0%, #010101 100%);
+  border: 1px solid #5A5B5D;
+  border-radius: 8px;
+  color: #DBC478;
+  overflow: hidden;
+  padding: 2%;
+  width: 100%;
+}
+.scoreboard .score .prize > img {
+  float: left;
+  width: 18%;
+  border-right: 1px solid #DBC478;
+  margin-right: 2%;
+}
+.scoreboard .score .prize .prize_content {
+  padding: 2%;
+}
+.scoreboard .score .prize p {
+  margin: 0;
+}
+.scoreboard .score button {
+  width: 100%;
+  padding: 2%;
+  background-color: #ebd28e;
+  color: #111;
+  border-radius: 5px;
+  margin-top: 11px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.scoreboard .from input {
+  width: 100%;
+  display: block;
+  margin: 0% 0% 5% 0%;
+  padding: 2% 0%;
+  font-size: 24px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.34);
+  border: 1px solid rgba(126, 105, 49, 0.58);
+  color: #fff;
+}
+.TandC {
+  display: block;
+  bottom: 5%;
+}
+.TandC li {
+  text-align: left;
+  list-style-type: decimal;
+  margin-left: 1.5em;
+}
+.TandC li p:first-of-type {
+  margin: 0;
+}
+.TandC .score {
+  overflow: scroll;
+  display: block;
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(9000deg);
+            transform: rotate(9000deg);
+  }
+}
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(9000deg);
+            transform: rotate(9000deg);
+  }
+}
+@-webkit-keyframes rotateY {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+@keyframes rotateY {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+@-webkit-keyframes shooting {
+  0% {
+    -webkit-transform: rotateX(0deg) translate3d(-36.2%, -50%, 280px) scale3d(0.3, 0.3, 1);
+            transform: rotateX(0deg) translate3d(-36.2%, -50%, 280px) scale3d(0.3, 0.3, 1);
+  }
+  100% {
+    -webkit-transform: rotateX(0deg) translate3d(-11.2%, -40%, 280px) scale3d(0.3, 0.3, 1);
+            transform: rotateX(0deg) translate3d(-11.2%, -40%, 280px) scale3d(0.3, 0.3, 1);
+  }
+}
+@keyframes shooting {
+  0% {
+    -webkit-transform: rotateX(0deg) translate3d(-36.2%, -50%, 280px) scale3d(0.3, 0.3, 1);
+            transform: rotateX(0deg) translate3d(-36.2%, -50%, 280px) scale3d(0.3, 0.3, 1);
+  }
+  100% {
+    -webkit-transform: rotateX(0deg) translate3d(-11.2%, -40%, 280px) scale3d(0.3, 0.3, 1);
+            transform: rotateX(0deg) translate3d(-11.2%, -40%, 280px) scale3d(0.3, 0.3, 1);
+  }
+}
+@-webkit-keyframes speed {
+  from {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+    opacity: .3;
+  }
+  to {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: .2;
+  }
+}
+@keyframes speed {
+  from {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+    opacity: .3;
+  }
+  to {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: .2;
+  }
+}
+@-webkit-keyframes colorful {
+  from {
+    -webkit-transform: translate3d(0%, 3%, 0px) scale3d(1.3, 1.3, 1);
+            transform: translate3d(0%, 3%, 0px) scale3d(1.3, 1.3, 1);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translate3d(0%, 10%, 0px) scale3d(1.4, 1.4, 1);
+            transform: translate3d(0%, 10%, 0px) scale3d(1.4, 1.4, 1);
+    opacity: 0;
+  }
+}
+@keyframes colorful {
+  from {
+    -webkit-transform: translate3d(0%, 3%, 0px) scale3d(1.3, 1.3, 1);
+            transform: translate3d(0%, 3%, 0px) scale3d(1.3, 1.3, 1);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translate3d(0%, 10%, 0px) scale3d(1.4, 1.4, 1);
+            transform: translate3d(0%, 10%, 0px) scale3d(1.4, 1.4, 1);
+    opacity: 0;
+  }
+}
